@@ -1,0 +1,64 @@
+Grant & revoke 
+create database workers;
+create TABLE hetero(
+id int(10) ,
+name varchar(70),
+address varchar(70)
+);
+INSERT into hetero(id,name,address)VALUES(2,'arjun','vijayawada'),
+(3,'aryan','amaravathi'),
+(4,'teja','vizag'),
+(5,'kavya','jammunagar'),
+(6,'smitha','kakinada');
+
+select * from hetero; 
+id	name	address	
+2    arjun   vijayawada
+3    aryan   amaravathi
+4    teja     vizag
+5    kavya    jammunagar
+6    smitha   kakinada
+grant select,insert,update,delete on hetero to aryan;
+grant select on hetero to aryan;
+grant all on hetero to aryan;
+revoke delete on hetero from aryan;
+revoke insert,update on hetero from aryan;
+revoke all on hetero from aryan;
+revoke connect from aryan;
+=======================================================================================================
+create database workers;
+create TABLE hetero(
+id int(10) ,
+name varchar(70),
+address varchar(70)
+);
+INSERT into hetero(id,name,address)VALUES(2,'arjun','vijayawada'),
+(3,'aryan','amaravathi'),
+(4,'teja','vizag'),
+(5,'kavya','jammunagar'),
+(6,'smitha','kakinada');
+
+select * from hetero; 
+id	name	address	
+2    arjun   vijayawada
+3    aryan   amaravathi
+4    teja     vizag
+5    kavya    jammunagar
+6    smitha   kakinada
+INSERT into hetero(id,name,address)VALUES(9,'tarun','kazimnager'),
+select * from hetero; 
+id	name	address	
+2    arjun   vijayawada
+3    aryan   amaravathi
+4    teja     vizag
+5    kavya    jammunagar
+6    smitha   kakinada
+9   'tarun'  'kazimnager'
+rollback;
+select * from hetero; 
+id	name	address	
+2    arjun   vijayawada
+3    aryan   amaravathi
+4    teja     vizag
+5    kavya    jammunagar
+6    smitha   kakinada
